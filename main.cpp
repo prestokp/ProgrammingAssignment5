@@ -37,6 +37,64 @@ bool doMaxSwapTest(Student &first, Student &second);
 bool doMinSwapTest(Student &first, Student &second);
 
 int main() {
-    std::cout << "Hello, World!" << std::endl;
+
+    vector<Student> students; //Student collection
+    char choice;
+
+    //Getting the student data from the file
+    try{
+        loadStudents(students, FILENAME);
+    }
+    //Catch exception if file fetch fails
+    catch (const char* message){
+        cout << message << endl;
+        system("PAUSE");
+        exit(EXIT_FAILURE);
+    }
+
+    //Do-While Loop
+    do{
+        //Present Menu
+        cout << "\nStudent Report Program\n\n"
+            << "\t1. Display Average Grade\n"
+            << "\t2. Display Maximum Grade\n"
+            << "\t3. Display Minimum Grade\n"
+            << "\t4. Display Student Roll\n"
+            << "\t5. Exit Program\n\n";
+        cout << "Enter your choice (1-4): ";
+        cin >> choice;
+
+        //Clearing out the stream buffer
+        while (getchar() != '\n');
+
+        //Process the choice
+        switch (choice)
+        {
+
+            case '1': //Average
+                displayAvgTemp(students);
+                break;
+
+            case '2': //Maximum
+                displayMaxTemp(students);
+                break;
+
+            case '3': //Minimum
+                displayMinTemp(students);
+
+            case '4': //Roll Call
+                //Display the student roll call
+                return 0;
+
+            case '5': //Quits the program
+                break;
+
+
+        }//End of switch statement
+
+
+    }while(choice != '4');
+
+
     return 0;
 }
