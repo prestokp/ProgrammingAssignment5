@@ -25,9 +25,9 @@ const string FILENAME = "NamesGrades.txt"; //file that we read
 //Reference operator specified because vectors are not passed by reference automatically
 
 void loadStudents(vector<Student> &students, string filename);
-void displayAvgTemp(vector<Student> &students);
-void displayMinTemp(vector<Student> &students);
-void displayMaxTemp(vector<Student> &students);
+void displayAvgGrade(vector<Student> &students);
+void displayMinGrade(vector<Student> &students);
+void displayMaxGrade(vector<Student> &students);
 string getGradeLetter(int grade);
 int getLongestNameLength(const vector<Student> &students);
 void swap(Student &a, Student &b);
@@ -72,15 +72,15 @@ int main() {
         {
 
             case '1': //Average
-                displayAvgTemp(students);
+                displayAvgGrade(students);
                 break;
 
             case '2': //Maximum
-                displayMaxTemp(students);
+                displayMaxGrade(students);
                 break;
 
             case '3': //Minimum
-                displayMinTemp(students);
+                displayMinGrade(students);
 
             case '4': //Roll Call
                 //Display the student roll call
@@ -139,20 +139,68 @@ void loadStudents(vector<Student> &students, string filename) {
         numGrades = 1;
 
         //Burns across the whitespace to the next numbers in the row
-        
+        while (iFile >> currentGrade){
+
+            numGrades++;
+            total += currentGrade;
+            if (currentGrade > max) max = currentGrade;
+            if (currentGrade < min) min = currentGrade;
+
+        }//Inner while loop delimiter
+
+        //Clear Fail
+        iFile.clear();
+
+        //averaging the grades out
+        student.average = static_cast<double>(total)/numGrades;
+        student.max = max;
+        student.min = min;
+
+        //refers to our collection of Students
+        //push back is adding to the collection
+        students.push_back(student);
+
+    }//Outer while loop delimiter
+
+    //Closing the file
+    iFile.close();
+
+}
+
+//Displaying the average grade for students
+void displayAvgGrade(vector<Student> &students) {
+
+    //Get the longest name from the students for formatting purposes
+    int maxLength = getLongestNameLength(students) + 1;
+
+    cout << setprecision(1) << fixed << showpoint;
+
+    //Setup table header
+    cout << "\n\nTemperature Averages\n";
+    cout << setw(maxLength) << left << "Name"
+        << setw(8) << right << "Average"
+        << setw(10) << "Condition" << endl;
+
+    //Sort the students by their average
+    bubbleSort(students, doAvgSwapTest);
+
+    //Display the table
+    for(int i = 0; i < students.size(); i++){
+
+        //Setw is not sticky in the stream
+        cout << setw(maxLength) << left
+            << (students[i].fName + " " + students[i].lName);
+
+        cout << setw(8) << right << students[i].average;
     }
 
 }
 
-void displayAvgTemp(vector<Student> &students) {
+void displayMinGrade(vector<Student> &students) {
 
 }
 
-void displayMinTemp(vector<Student> &students) {
-
-}
-
-void displayMaxTemp(vector<Student> &students) {
+void displayMaxGrade(vector<Student> &students) {
 
 }
 
