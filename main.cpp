@@ -89,12 +89,97 @@ int main() {
             case '5': //Quits the program
                 break;
 
+            default:
+                cout << "Invalid Option. Please select again.\n\n";
+                break;
 
         }//End of switch statement
 
+        if (choice != '4'){
+            cout << endl;
+            system("PAUSE");
+            system("CLS");
+        }
 
     }while(choice != '4');
 
+    cout << endl;
 
     return 0;
+
+    //Load data from the file into the Student vector
+
+
+}//Main function delimiter
+
+
+void loadStudents(vector<Student> &students, string filename) {
+
+    ifstream iFile; //input file stream
+    int total = 0;  //accumulator for total students
+    int max;        //max grade for the student
+    int min;        //min grade for the student
+    int currentGrade; //current grade for the student
+    Student student; //a temp Student for getting data
+    int numGrades = 0; //How many grades for each student
+
+    //Open the file
+    iFile.open(filename);
+    if (!iFile){
+        throw "Cannot open file " + filename;
+    }
+
+    //Read and process the file information
+    while (iFile >> student.fName >> student.lName){
+
+        //Get the first grade and place in total, max, and min
+        //We'll work our way with grades from here
+        iFile >> total;
+        max = min = total;
+        numGrades = 1;
+
+        //Burns across the whitespace to the next numbers in the row
+        
+    }
+
+}
+
+void displayAvgTemp(vector<Student> &students) {
+
+}
+
+void displayMinTemp(vector<Student> &students) {
+
+}
+
+void displayMaxTemp(vector<Student> &students) {
+
+}
+
+string getGradeLetter(int grade) {
+    return std::string();
+}
+
+int getLongestNameLength(const vector<Student> &students) {
+    return 0;
+}
+
+void swap(Student &a, Student &b) {
+
+}
+
+void bubbleSort(vector<Student> &students, bool (*doSwapTest)(Student &, Student &)) {
+
+}
+
+bool doAvgSwapTest(Student &first, Student &second) {
+    return false;
+}
+
+bool doMaxSwapTest(Student &first, Student &second) {
+    return false;
+}
+
+bool doMinSwapTest(Student &first, Student &second) {
+    return false;
 }
