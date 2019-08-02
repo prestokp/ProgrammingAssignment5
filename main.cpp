@@ -315,7 +315,26 @@ void swap(Student &a, Student &b) {
 
 }
 
-void bubbleSort(vector<Student> &students, bool (*doSwapTest)(Student &, Student &)) {
+void bubbleSort(vector<Student> &students, bool (*doSwapTest)(Student &, Student &)){
+
+    //Boolean flag variable
+    bool didSwap = false;
+
+    for(int i = students.size() - 1; i > 0; i--){
+        didSwap = false;
+        for(int j = 0; j < i; j++){
+
+            if ((*doSwapTest)(students[j], students[j+1])){
+
+                swap(students[j], students[j+1]);
+                didSwap = false;
+
+            }//Conditional Delimiter
+
+        }//Inner loop delimiter
+        if (!didSwap) break;
+
+    }//Outer loop delimiter
 
 }
 
