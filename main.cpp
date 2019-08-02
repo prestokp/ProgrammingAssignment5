@@ -259,14 +259,59 @@ void displayMaxGrade(vector<Student> &students) {
 }
 
 string getGradeLetter(int grade) {
-    return std::string();
+
+    string letterGrade; //declares a character variable to hold the letter grade
+
+    //Letter grades are assigned based off of conditional statements and then returns the
+    //variable
+    if(grade <= 100 && grade >= 90){
+        cout << "Your letter Grade is a A";
+        letterGrade = "A";
+    }
+    else if(grade <= 89 && grade >= 80){
+        cout << "Your letter grade is a B";
+        letterGrade = "B";
+    }
+    else if (grade <= 79 && grade >= 70){
+        cout << "Your letter grade is a C";
+        letterGrade = "C";
+    }
+    else if (grade <= 69 && grade >= 60){
+        cout << "Your letter grade is a D";
+        letterGrade = "D";
+    }
+    else{
+        cout << "Your letter grade is an F";
+        letterGrade = "F";
+    }
+
+    return letterGrade;
+
 }
 
+//Return the length of the longest student name
 int getLongestNameLength(const vector<Student> &students) {
-    return 0;
+
+    int maxLength = 0;
+    for(int i = 0; i < students.size(); i++){
+
+        int length = students[i].fName.length() +
+                students[i].lName.length() + 1;
+
+        if(length > maxLength){
+            maxLength = length;
+        }//Conditional delimiter
+
+    }//Loop delimiter
+    return maxLength;
 }
 
+//swap a & b
 void swap(Student &a, Student &b) {
+
+    Student temp = a;
+    a = b;
+    b = temp;
 
 }
 
