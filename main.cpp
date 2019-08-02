@@ -176,10 +176,10 @@ void displayAvgGrade(vector<Student> &students) {
     cout << setprecision(1) << fixed << showpoint;
 
     //Setup table header
-    cout << "\n\nTemperature Averages\n";
+    cout << "\n\nGrade Averages\n";
     cout << setw(maxLength) << left << "Name"
         << setw(8) << right << "Average"
-        << setw(10) << "Condition" << endl;
+        << setw(10) << "Grade Letter" << endl;
 
     //Sort the students by their average
     bubbleSort(students, doAvgSwapTest);
@@ -191,16 +191,70 @@ void displayAvgGrade(vector<Student> &students) {
         cout << setw(maxLength) << left
             << (students[i].fName + " " + students[i].lName);
 
-        cout << setw(8) << right << students[i].average;
+        cout << setw(8) << right << students[i].average
+            << setw(10) << getGradeLetter(students[i].average)
+            << endl;
     }
 
 }
 
 void displayMinGrade(vector<Student> &students) {
 
+    //Get the longest name from the students for formatting purposes
+    int maxLength = getLongestNameLength(students) + 1;
+
+    //cout << setprecision(1) << fixed << showpoint;
+
+    //Setup table header
+    cout << "\n\nMinimum Grade\n";
+    cout << setw(maxLength) << left << "Name"
+         << setw(8) << right << "Minimum"
+         << setw(10) << "Grade Letter" << endl;
+
+    //Sort the students by their minimum grade
+    bubbleSort(students, doMinSwapTest);
+
+    //Display the table
+    for(int i = 0; i < students.size(); i++){
+
+        //Setw is not sticky in the stream
+        cout << setw(maxLength) << left
+             << (students[i].fName + " " + students[i].lName);
+
+        cout << setw(8) << right << students[i].min
+             << setw(10) << getGradeLetter(students[i].min)
+             << endl;
+    }
+
 }
 
 void displayMaxGrade(vector<Student> &students) {
+
+    //Get the longest name from the students for formatting purposes
+    int maxLength = getLongestNameLength(students) + 1;
+
+    //cout << setprecision(1) << fixed << showpoint;
+
+    //Setup table header
+    cout << "\n\nMaximum Grade\n";
+    cout << setw(maxLength) << left << "Name"
+         << setw(8) << right << "Maximum"
+         << setw(10) << "Grade Letter" << endl;
+
+    //Sort the students by their maximum grade
+    bubbleSort(students, doMaxSwapTest);
+
+    //Display the table
+    for(int i = 0; i < students.size(); i++){
+
+        //Setw is not sticky in the stream
+        cout << setw(maxLength) << left
+             << (students[i].fName + " " + students[i].lName);
+
+        cout << setw(8) << right << students[i].max
+             << setw(10) << getGradeLetter(students[i].max)
+             << endl;
+    }
 
 }
 
