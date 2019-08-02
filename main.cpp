@@ -165,7 +165,7 @@ void loadStudents(vector<Student> &students, string filename) {
     //Closing the file
     iFile.close();
 
-}
+}//load students function delimiter
 
 //Displaying the average grade for students
 void displayAvgGrade(vector<Student> &students) {
@@ -196,7 +196,7 @@ void displayAvgGrade(vector<Student> &students) {
             << endl;
     }
 
-}
+}//Average grade function delimiter
 
 void displayMinGrade(vector<Student> &students) {
 
@@ -226,7 +226,7 @@ void displayMinGrade(vector<Student> &students) {
              << endl;
     }
 
-}
+}//Min grade function delimiter
 
 void displayMaxGrade(vector<Student> &students) {
 
@@ -256,7 +256,7 @@ void displayMaxGrade(vector<Student> &students) {
              << endl;
     }
 
-}
+}//Max grade function delimiter
 
 string getGradeLetter(int grade) {
 
@@ -287,7 +287,7 @@ string getGradeLetter(int grade) {
 
     return letterGrade;
 
-}
+}//Letter Grade function delimiter
 
 //Return the length of the longest student name
 int getLongestNameLength(const vector<Student> &students) {
@@ -304,7 +304,8 @@ int getLongestNameLength(const vector<Student> &students) {
 
     }//Loop delimiter
     return maxLength;
-}
+
+}//LongestName function delimiter
 
 //swap a & b
 void swap(Student &a, Student &b) {
@@ -336,16 +337,19 @@ void bubbleSort(vector<Student> &students, bool (*doSwapTest)(Student &, Student
 
     }//Outer loop delimiter
 
-}
+}//Bubble Sort function delimiter
 
+//Compare averages of Student grades
 bool doAvgSwapTest(Student &first, Student &second) {
-    return false;
+    return first.average < second.average;
 }
 
+//Compare maximums of Student grades
 bool doMaxSwapTest(Student &first, Student &second) {
-    return false;
+    return first.max < second.max;
 }
 
+//Compare minimums of Student Grades
 bool doMinSwapTest(Student &first, Student &second) {
-    return false;
+    return first.min < second.min;
 }
